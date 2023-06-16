@@ -1,23 +1,23 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
 
-export class NasaPics implements INodeType {
+export class PocN8N implements INodeType {
 	description: INodeTypeDescription = {
 		// Basic node details will go here
-		displayName: 'NASA Pics',
-		name: 'NasaPics',
-		icon: 'file:nasapics.svg',
+		displayName: 'POC N8N_NODE',
+		name: 'PocN8N',
+		icon: 'file:NASA_logo.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Get data from NASAs API',
 		defaults: {
-			name: 'NASA Pics',
+			name: 'PocN8N',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'NasaPicsApi',
+				name: 'pocN8NApi',
 				required: true,
 			},
 		],
@@ -55,9 +55,7 @@ export class NasaPics implements INodeType {
 				noDataExpression: true,
 				displayOptions: {
 					show: {
-						resource: [
-							'astronomyPictureOfTheDay',
-						],
+						resource: ['astronomyPictureOfTheDay'],
 					},
 				},
 				options: [
@@ -83,9 +81,7 @@ export class NasaPics implements INodeType {
 				noDataExpression: true,
 				displayOptions: {
 					show: {
-						resource: [
-							'marsRoverPhotos',
-						],
+						resource: ['marsRoverPhotos'],
 					},
 				},
 				options: [
@@ -110,10 +106,10 @@ export class NasaPics implements INodeType {
 				name: 'roverName',
 				type: 'options',
 				options: [
-					{name: 'Curiosity', value: 'curiosity'},
-					{name: 'Opportunity', value: 'opportunity'},
-					{name: 'Perseverance', value: 'perseverance'},
-					{name: 'Spirit', value: 'spirit'},
+					{ name: 'Curiosity', value: 'curiosity' },
+					{ name: 'Opportunity', value: 'opportunity' },
+					{ name: 'Perseverance', value: 'perseverance' },
+					{ name: 'Spirit', value: 'spirit' },
 				],
 				routing: {
 					request: {
@@ -123,9 +119,7 @@ export class NasaPics implements INodeType {
 				default: 'curiosity',
 				displayOptions: {
 					show: {
-						resource: [
-							'marsRoverPhotos',
-						],
+						resource: ['marsRoverPhotos'],
 					},
 				},
 			},
@@ -135,12 +129,10 @@ export class NasaPics implements INodeType {
 				required: true,
 				name: 'marsRoverDate',
 				type: 'dateTime',
-				default:'',
+				default: '',
 				displayOptions: {
 					show: {
-						resource: [
-							'marsRoverPhotos',
-						],
+						resource: ['marsRoverPhotos'],
 					},
 				},
 				routing: {
@@ -161,12 +153,8 @@ export class NasaPics implements INodeType {
 				placeholder: 'Add Field',
 				displayOptions: {
 					show: {
-						resource: [
-							'astronomyPictureOfTheDay',
-						],
-						operation: [
-							'get',
-						],
+						resource: ['astronomyPictureOfTheDay'],
+						operation: ['get'],
 					},
 				},
 				options: [
@@ -185,9 +173,7 @@ export class NasaPics implements INodeType {
 						},
 					},
 				],
-			}
-
-
-		]
+			},
+		],
 	};
 }
